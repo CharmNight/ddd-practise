@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.night.log.config.MyLogAutoConfiguration,\
+  com.night.user.sms.AliSmsUtil

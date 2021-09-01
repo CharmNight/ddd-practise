@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: user
+  cloud:
+    consul:
+      host: 127.0.0.1
+      discovery:
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+        health-check-path: /actuator/health
+        health-check-interval: 10s
+        preferIpAddress: true
+        heartbeat:
+          enabled: true
+        enabled: true
+        register: true
+        deregister: true
+      config:
+        format: key_value
+        enabled: true
+        default_context: application
+        data-key: data
+        prefix: config

@@ -1,0 +1,52 @@
+server:
+  port: 50003
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:6226/user?useSSL=false&useAffectedRows=true&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      filters: stat
+      initial-size: 10
+      max-active: 20
+      min-idle: 8
+      connection-init-sqls: set names utf8mb4
+  redis:
+    host: 127.0.0.1
+    port: 6227
+    password: redis
+
+
+xxl:
+  job:
+    admin:
+      service: xxl-job
+      addresses: /xxl-job-admin
+    ### xxl-job executor appname
+    executor:
+      appname: user
+      ### xxl-job executor log-path
+      logpath: log
+      ### xxl-job executor log-retention-days
+      logretentiondays: 30
+      ### xxl-job executor registry-address: default use address to registry , otherwise use ip:port if address is null
+      address:
+      ### xxl-job executor server-info
+      ip:
+      port: -1
+
+
+ali:
+  sms:
+    accessKeyId: 123
+    accessKeySecret: 123
+
+
+mybatis-plus:
+  type-aliases-package: user.user.infrastructure.data.data_object
+  mapper-locations: classpath*:com/pikaent/user/mapper/*.xml
+mylog:
+  file-path: log.txt
